@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: palabras-ocultas
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: sergi
+Implementation-Vendor-Id: edu.uclm.es
+Build-Jdk: 1.8.0_202
+Implementation-URL: http://maven.apache.org
+Created-By: Maven Integration for Eclipse
+
