@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>edu.uclm.esi</groupId>
-	<artifactId>gamesMySQL</artifactId>
+	<artifactId>palabras-ocultas</artifactId>
 	<version>0.1.0</version>
 
 	<parent>
