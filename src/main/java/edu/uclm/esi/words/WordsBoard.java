@@ -4,9 +4,11 @@ import edu.uclm.esi.games.model.AbstractPlayer;
 import edu.uclm.esi.games.model.Board;
 
 public class WordsBoard extends Board {
+	private String[][] words;
 
 	public WordsBoard(WordsMatch wordsMatch) {
-		this.match = wordsMatch;
+		super(wordsMatch);
+		this.words = new String[3][3];
 	}
 
 	@Override
@@ -29,12 +31,20 @@ public class WordsBoard extends Board {
 
 	@Override
 	public String getContent() {
-		return "Albacete, Cadiz, Cuenca";
+		return "Albacete, Cadiz, Cuenca, Barcelona, Madrid, Ciudad Real, Burgos, Valencia, Tenerife";
 	}
 
 	@Override
 	public boolean draw() {
 		return false;
+	}
+
+	public String[][] getWords() {
+		return words;
+	}
+
+	public void setWords(String[][] words) {
+		this.words = words;
 	}
 
 }

@@ -9,7 +9,7 @@
 define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-element-utils'],
  function(oj, ko, $, app, moduleUtils) {
   
-    function ProfileViewModel() {
+    function SalaDeEsperaViewModel() {
       var self = this;
       
 
@@ -55,6 +55,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new ProfileViewModel();
+    return new SalaDeEsperaViewModel();
   }
 );

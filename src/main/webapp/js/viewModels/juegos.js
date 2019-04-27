@@ -9,7 +9,7 @@
 define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-element-utils','ojs/ojselectcombobox'],
  function(oj, ko, $, app, moduleUtils) {
   
-    function CustomerViewModel() {
+    function JuegosViewModel() {
       var self = this;
       self.selectedGame = ko.observable("Cargando lista...");
       self.games = ko.observableArray([]);
@@ -112,6 +112,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new CustomerViewModel();
+    return new JuegosViewModel();
   }
 );

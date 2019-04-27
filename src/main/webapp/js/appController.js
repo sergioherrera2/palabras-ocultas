@@ -36,10 +36,6 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
           if(data.type ="Match") {
             self.opponentUserName= (data.playerA.userName==self.userName ? data.playerB.userName: data.playerA.userName);
             self.currentPlayerUserName=data.currentPlayerUserName;
-            if(data.gameName !="tictactoe"){
-              window.alert("No tenemos ese juego");
-              self.router.go("juegos");
-            }
             console.log(self.userName);
             console.log(self.currentPlayerUserName);
             console.log(self.opponentUserName);
