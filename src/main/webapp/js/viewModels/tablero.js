@@ -6,7 +6,7 @@
 /*
  * Your profile ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-element-utils'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-element-utils', 'ojs/ojbutton'],
  function(oj, ko, $, app, moduleUtils) {
   
     function ProfileViewModel() {
@@ -16,12 +16,55 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
       
       self.opponentUserName=ko.observable(app.opponentUserName);
       self.currentPlayerUserName=ko.observable(app.currentPlayerUserName);
-      console.log(self.currentPlayerUserName());
+
+      
+      console.log(app.currentPlayerUserName);
       console.log(self.opponentUserName());
 
       
 
       console.log(self.userName());
+
+      self.button1Text="Palabra 1";
+      self.button2Text="Palabra 2";
+      self.button3Text="Palabra 3";
+      self.button4Text="Palabra 4";
+      self.button5Text="Palabra 5";
+      self.button6Text="Palabra 6";
+      self.button7Text="Palabra 7";
+      self.button8Text="Palabra 8";
+      self.button9Text="Palabra 9";
+
+
+      self.button1Click = function(){
+        console.log("Button1 clicked");
+      }
+
+      self.button2Click = function(){
+        console.log("Button2 clicked");
+      }
+      self.button3Click = function(){
+        console.log("Button3 clicked");
+      }
+      self.button4Click = function(){
+        console.log("Button4 clicked");
+      }
+      self.button5Click = function(){
+        console.log("Button5 clicked");
+      }
+      self.button6Click = function(){
+        console.log("Button6 clicked");
+      }
+      self.button7Click = function(){
+        console.log("Button7 clicked");
+      }
+      self.button8Click = function(){
+        console.log("Button8 clicked");
+      }
+      self.button9Click = function(){
+        console.log("Button9 clicked");
+      }
+
 
 
 

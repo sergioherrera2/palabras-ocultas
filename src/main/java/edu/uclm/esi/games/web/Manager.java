@@ -15,6 +15,7 @@ import edu.uclm.esi.games.dao.AbstractPlayerRepository;
 import edu.uclm.esi.games.dao.BoardRepositoryCustom;
 import edu.uclm.esi.games.dao.PlayerRepository;
 import edu.uclm.esi.games.dao.TokenRepository;
+import edu.uclm.esi.games.dao.WordRepository;
 import edu.uclm.esi.games.kuar.KuarGame;
 import edu.uclm.esi.games.model.AbstractPlayer;
 import edu.uclm.esi.games.model.Board;
@@ -42,6 +43,8 @@ public class Manager {
 	private TokenRepository tokensRepo;
 	@Autowired
 	private BoardRepositoryCustom boardsRepo;
+	@Autowired
+	private WordRepository wordsRepo;
 	
 	private Manager() {
 		this.inPlayMatches=new ConcurrentHashMap<>();

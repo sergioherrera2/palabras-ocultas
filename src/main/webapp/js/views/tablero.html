@@ -20,19 +20,52 @@
         <h1>Tablero</h1>
         <div>
           <div>
-            <!--ko text: userName--><!--/ko--> VS
+            <!--ko text: userName--><!--/ko--> VS <!--ko text: opponentUserName--><!--/ko--> 
           </div>
-          <div>
-            <!--ko text: opponentUserName--><!--/ko--> 
-          </div>
-          <div>
-            <ko text: userName></ko><ko text: opponentUserName></ko>
-          </div>
-            To change the content of this section, you will make edits to the customers.html file located in the /js/views folder.
             <div>
               <oj-label>Turno de <!--ko text:currentPlayerUserName--><!--/ko--> </oj-label->
             </div>
+            <div>
+              <oj-button id='button1' on-oj-action='[[button1Click]]'>
+                <span><oj-bind-text value="[[button1Text]]"></oj-bind-text></span>
+            </oj-button>
+            <oj-button id='button2' on-oj-action='[[button2Click]]'>
+              <span><oj-bind-text value="[[button2Text]]"></oj-bind-text></span>
+          </oj-button>
+          <oj-button id='button3' on-oj-action='[[button3Click]]'>
+            <span><oj-bind-text value="[[button3Text]]"></oj-bind-text></span>
+        </oj-button>
+            </div>
+            <div>
+                <oj-button id='button4' on-oj-action='[[button4Click]]'>
+                    <span><oj-bind-text value="[[button4Text]]"></oj-bind-text></span>
+                </oj-button>
+                <oj-button id='button5' on-oj-action='[[button5Click]]'>
+                  <span><oj-bind-text value="[[button5Text]]"></oj-bind-text></span>
+              </oj-button>
+              <oj-button id='button6' on-oj-action='[[button6Click]]'>
+                <span><oj-bind-text value="[[button6Text]]"></oj-bind-text></span>
+
+            </div>
+            <div>
+                <oj-button id='button7' on-oj-action='[[button7Click]]'>
+                    <span><oj-bind-text value="[[button7Text]]"></oj-bind-text></span>
+                </oj-button>
+                <oj-button id='button8' on-oj-action='[[button8Click]]'>
+                  <span><oj-bind-text value="[[button8Text]]"></oj-bind-text></span>
+              </oj-button>
+              <oj-button id='button9' on-oj-action='[[button9Click]]'>
+                <span><oj-bind-text value="[[button9Text]]"></oj-bind-text></span>
+              </oj-button>
+            </div>
+            <div>
+
+           
+            </div>
         </div>
+        
+
+        
       </div>
     </div>
   </div>

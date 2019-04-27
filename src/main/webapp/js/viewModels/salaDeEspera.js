@@ -31,7 +31,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
        * after being disconnected.
        */
       self.connected = function() {
-        // Implement if needed
+        console.log("ESTOY EN LA SALA DE ESPERA");
       };
 
       /**

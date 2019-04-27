@@ -24,18 +24,18 @@
   section from what is defined, you should also change the role value for that
   section to represent the appropriate content type.
   ***************************** IMPORTANT INFORMATION ************************************ -->
-<html lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en-us">
   <head>
     <title>Oracle JET Starter Template - Hybrid Nav Drawer</title>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' *.oracle.com 'unsafe-inline' 'unsafe-eval' localhost:* 127.0.0.1:*; style-src 'self' *.oracle.com  'unsafe-inline'; img-src * data:"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' *.oracle.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' *.oracle.com  'unsafe-inline'; img-src * data:">
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
 
     <!-- This is the main css file for the default Alta theme -->
-<!-- injector:theme -->
-<link rel="stylesheet" href="css/alta/6.1.0/web/alta.css" id="css"/>
-<!-- endinjector -->
+    <!-- injector:theme -->
+    <link rel="stylesheet" href="css/libs/oj/v6.1.0/alta/oj-alta-min.css" type="text/css"/>
+    <!-- endinjector -->
     <!-- This contains icon fonts used by the starter template -->
     <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
 
@@ -61,13 +61,18 @@
       -->
       <div id="navDrawer" role="navigation" class="oj-hybrid-applayout-offcanvas oj-contrast-marker oj-offcanvas-start">
         <!-- User Profile -->
-        <img alt="profile image" src="css/images/james_avatar.png" class="demo-james-icon"/>
-        <h2 class="demo-profile-name">Usuario</h2>
+        <img alt="profile image" src="css/images/james_avatar.png" class="demo-james-icon">
+        <h2 class="demo-profile-name">James</h2>
         <!-- Navigation -->
-        <oj-navigation-list class="oj-navigationlist-stack-icon-label" data="[[navDataSource]]" edge="start" item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('navTemplate', true)]]" on-click="[[toggleDrawer]]" selection="{{router.stateId}}">
+        <oj-navigation-list class="oj-navigationlist-stack-icon-label"
+                            data="[[navDataSource]]"
+                            edge="start"
+                            item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
+                            on-click="[[toggleDrawer]]"
+                            selection="{{router.stateId}}">
         </oj-navigation-list>
         <div class="oj-flex-bar oj-sm-justify-content-center">
-          <h2 class="demo-app-name">Palabras Ocultas</h2>
+          <h2 class="demo-app-name">Oracle App Name</h2>
         </div>
       </div>
    

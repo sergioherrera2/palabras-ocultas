@@ -36,7 +36,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
         });
       }
       function juegosOK(){
-        app.router.go("salaDeEspera");
+       app.router.go("salaDeEspera");
       }
 
       function loadGames(){
