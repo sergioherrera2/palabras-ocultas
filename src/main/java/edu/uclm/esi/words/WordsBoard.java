@@ -1,14 +1,17 @@
 package edu.uclm.esi.words;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import edu.uclm.esi.games.model.AbstractPlayer;
 import edu.uclm.esi.games.model.Board;
 
 public class WordsBoard extends Board {
-	private String[][] words;
+	private String[] words;
 
 	public WordsBoard(WordsMatch wordsMatch) {
 		super(wordsMatch);
-		this.words = new String[3][3];
+		this.words = new String[]{"Albacete", "Cadiz", "Cuenca", "Barcelona", "Madrid", "Ciudad Real", "Burgos", "Valencia", "Tenerife"};
+		
 	}
 
 	@Override
@@ -39,11 +42,11 @@ public class WordsBoard extends Board {
 		return false;
 	}
 
-	public String[][] getWords() {
+	public String[] getWords() {
 		return words;
 	}
 
-	public void setWords(String[][] words) {
+	public void setWords(String[] words) {
 		this.words = words;
 	}
 

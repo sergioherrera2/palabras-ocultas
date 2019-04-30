@@ -30,7 +30,7 @@ public abstract class Match {
 	protected Integer currentPlayer;
 	@ManyToOne
 	protected AbstractPlayer winner;
-	@ManyToOne @JoinColumn(name = "id_board") 
+	@ManyToOne @JoinColumn(name = "id_board") @JsonIgnore
 	protected Board board;
 	private boolean draw;
 	@JsonIgnore @Transient 

@@ -9,27 +9,34 @@ import edu.uclm.esi.games.model.Game;
 import edu.uclm.esi.games.model.Match;
 
 public class WordsMatch extends Match {
-	// private WordsBoard boardA, boardB;
+	 private WordsBoard boardA, boardB;
 
 	public WordsMatch(Game game) {
 		super(game);
 		this.board = new WordsBoard(this);
+		this.boardA = this.descolocar();
+		this.boardB = this.descolocar();
 	}
 
-//	@Override
-//	public void setBoard(Board board) {
-//		super.setBoard(board);
-//		WordsBoard theBoard = (WordsBoard) board;
-//		this.boardA = new WordsBoard(theBoard.get_id(), theBoard.getRows(), theBoard.getContent());
-//		this.boardB = new WordsBoard(theBoard.get_id(), theBoard.getRows(), theBoard.getContent());
-//		this.boardA.setMatch(this);
-//		this.boardB.setMatch(this);
-//	}
+	private WordsBoard descolocar() {
+		WordsBoard result = new WordsBoard(this);
+		for (int i = 0; i<9; i++) {
+			result.setWords(((WordsBoard) this.board).getWords());
+		}
+		Random dado = new Random();
+		for (int i = 0; i<90; i++) {
+			int origen = dado.nextInt(9);
+			int destino = dado.nextInt(9);
+			String aux = result.getWords()[destino];
+			result.getWords()[destino] = result.getWords()[origen];
+			result.getWords()[origen] = aux;
+		}
+		return result;
+	}
 
 	@Override
 	protected boolean tieneElTurno(AbstractPlayer player) {
-		return (this.getCurrentPlayer() == 0 && player == this.playerA)
-				|| (this.getCurrentPlayer() == 1 && player == playerB);
+		return true;
 	}
 
 	@Override
@@ -38,4 +45,11 @@ public class WordsMatch extends Match {
 		this.currentPlayer = dado ? 0 : 1;
 	}
 
+	public WordsBoard getBoardA() {
+		return boardA;
+	} 
+	
+	public WordsBoard getBoardB() {
+		return boardB;
+	}
 }
