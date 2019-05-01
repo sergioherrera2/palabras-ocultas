@@ -14,7 +14,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
         self.userName=userName;
         
         self.router.go("juegos");
-        console.log(userName);
+        console.log("[INFO] " + userName + " se ha logueado.");
         conectarWebSocket();
         
       }
@@ -22,11 +22,11 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
         self.ws = new WebSocket("ws://localhost:8080/gamesws");
 
         self.ws.onopen = function(){
-          console.log("WebSocket conectado");
+          console.log("[INFO] WebSocket conectado.");
         }
 
         self.ws.onclose = function(){
-          console.log("WebSocket desconectado");
+          console.log("[INFO] WebSocket desconectado.");
         }
 
         self.ws.onmessage = function(event){
@@ -57,7 +57,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
        'juegos': {label: 'Lista de juegos'},
        'tablero': {label: 'Tablero'},
        'register': {label: 'Creación de cuenta'},
-       'salaDeEspera' : {label: 'sala de espera'}
+       'salaDeEspera' : {label: 'Sala de espera'}
        
       });
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();

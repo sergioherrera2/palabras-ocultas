@@ -21,6 +21,7 @@ public class WordsMatch extends Match {
 		for (int i = 0; i < 9; i++) {
 			result.getWords()[i] = ((WordsBoard) this.board).getWords()[i];
 		}
+		
 		Random dado = new Random();
 		for (int i = 0; i < 90; i++) {
 			int origen = dado.nextInt(9);

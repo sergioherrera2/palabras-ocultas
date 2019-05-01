@@ -14,28 +14,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
       self.selectedGame = ko.observable("Cargando lista...");
       self.games = ko.observableArray([]);
       
-      self.joinGame = function(){
-        var recurso="http://localhost:8080/joinGame";
-        var data = {
-          type: "joinGame",
-          gameName : self.selectedGame()
-          
-        }
-        data = "p=" + JSON.stringify(data);
-        $.ajax({
-          url : recurso,
-          type : "POST",
-          data : data,
-          xhrFields:{
-            withCredentials: true
-          },
-          headers : {
-            'Content-Type' : 'application/x-www-form-urlencoded'
-          },
-          success: juegosOK
-        });
-      }
-      function juegosOK(){
+      self.joinSalaDeEspera = function() {
        app.router.go("salaDeEspera");
       }
 

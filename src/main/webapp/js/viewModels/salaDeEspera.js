@@ -12,6 +12,27 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
     function SalaDeEsperaViewModel() {
       var self = this;
       
+      function joinGame(){
+        var recurso="http://localhost:8080/joinGame";
+        var data = {
+          type: "joinGame",
+          gameName : "Hidden Words"
+          
+        }
+        data = "p=" + JSON.stringify(data);
+        $.ajax({
+          url : recurso,
+          type : "POST",
+          data : data,
+          xhrFields:{
+            withCredentials: true
+          },
+          headers : {
+            'Content-Type' : 'application/x-www-form-urlencoded'
+          },
+        });
+      }
+
 
       // Header Config
       self.headerConfig = ko.observable({'view':[], 'viewModel':null});
@@ -31,7 +52,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
        * after being disconnected.
        */
       self.connected = function() {
-        console.log("ESTOY EN LA SALA DE ESPERA");
+        console.log("[INFO] Cliente en sala de espera.");
+        joinGame();
       };
 
       /**
