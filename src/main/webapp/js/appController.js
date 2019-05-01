@@ -30,15 +30,14 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
         }
 
         self.ws.onmessage = function(event){
-          console.log(event.data);
+          console.log("[INFO] " + event.data);
           var data=JSON.parse(event.data);
-          console.log(data);
+          console.log("[INFO] " + data);
           if(data.type ="Match") {
             self.opponentUserName= (data.playerA.userName==self.userName ? data.playerB.userName: data.playerA.userName);
             self.currentPlayerUserName=data.currentPlayerUserName;
-            console.log(self.userName);
-            console.log(self.currentPlayerUserName);
-            console.log(self.opponentUserName);
+            console.log("[INFO] usuario: " + self.userName);
+            console.log("[INFO] rival: " + self.opponentUserName);
             self.router.go("tablero");
           }else if(data.type =="Movement"){
             self.router.currentState().dealWithMessage(data);
@@ -46,7 +45,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
         }
 
         self.ws.onerror = function(){
-          console.log(event.data);
+          console.log("[ERROR]: " + event.data);
         }
       }
 

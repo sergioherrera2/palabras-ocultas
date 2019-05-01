@@ -17,14 +17,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
       self.opponentUserName=ko.observable(app.opponentUserName);
       self.currentPlayerUserName=ko.observable(app.currentPlayerUserName);
 
-      
-      console.log(app.currentPlayerUserName);
-      console.log(self.opponentUserName());
-
-      
-
-      console.log(self.userName());
-
       self.button1Text="Palabra 1";
       self.button2Text="Palabra 2";
       self.button3Text="Palabra 3";
@@ -64,12 +56,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
       self.button9Click = function(){
         console.log("Button9 clicked");
       }
-
-
-
-
-
-
 
       self.dealWithMessage = function(data){
         console.log(data);
