@@ -1,7 +1,5 @@
 package edu.uclm.esi.words;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import edu.uclm.esi.games.model.AbstractPlayer;
 import edu.uclm.esi.games.model.Board;
 

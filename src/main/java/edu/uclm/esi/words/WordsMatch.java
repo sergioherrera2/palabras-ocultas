@@ -2,14 +2,12 @@ package edu.uclm.esi.words;
 
 import java.util.Random;
 
-import edu.uclm.esi.games.kuar.KuarBoard;
 import edu.uclm.esi.games.model.AbstractPlayer;
-import edu.uclm.esi.games.model.Board;
 import edu.uclm.esi.games.model.Game;
 import edu.uclm.esi.games.model.Match;
 
 public class WordsMatch extends Match {
-	 private WordsBoard boardA, boardB;
+	private WordsBoard boardA, boardB;
 
 	public WordsMatch(Game game) {
 		super(game);
@@ -20,11 +18,11 @@ public class WordsMatch extends Match {
 
 	private WordsBoard descolocar() {
 		WordsBoard result = new WordsBoard(this);
-		for (int i = 0; i<9; i++) {
-			result.setWords(((WordsBoard) this.board).getWords());
+		for (int i = 0; i < 9; i++) {
+			result.getWords()[i] = ((WordsBoard) this.board).getWords()[i];
 		}
 		Random dado = new Random();
-		for (int i = 0; i<90; i++) {
+		for (int i = 0; i < 90; i++) {
 			int origen = dado.nextInt(9);
 			int destino = dado.nextInt(9);
 			String aux = result.getWords()[destino];
@@ -47,8 +45,8 @@ public class WordsMatch extends Match {
 
 	public WordsBoard getBoardA() {
 		return boardA;
-	} 
-	
+	}
+
 	public WordsBoard getBoardB() {
 		return boardB;
 	}
