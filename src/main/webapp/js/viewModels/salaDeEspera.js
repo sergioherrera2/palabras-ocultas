@@ -16,7 +16,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
         var recurso="http://localhost:8080/joinGame";
         var data = {
           type: "joinGame",
-          gameName : "Hidden Words"
+          gameName : "Hidden words"
           
         }
         data = "p=" + JSON.stringify(data);
