@@ -12,7 +12,7 @@ import edu.uclm.esi.games.ws.WSServer;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan( basePackageClasses = {WebController.class, Manager.class, WSServer.class, WSConfiguration.class} )
+@ComponentScan(basePackageClasses = { WebController.class, Manager.class, WSServer.class, WSConfiguration.class })
 public class Lanzadora {
 
 	public static void main(String[] args) {

@@ -3,70 +3,119 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 <div class="oj-hybrid-applayout-page">
-  <div class="oj-applayout-fixed-top">
-      <!--
+	<div class="oj-applayout-fixed-top">
+		<!--
        ** Oracle JET V6.1.0 hybrid mobile application header pattern.
        ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
        ** more information on how to use this pattern.
     -->
-    <header role="banner" class="oj-hybrid-applayout-header">
-      <oj-module config="[[headerConfig]]"></oj-module>
-    </header>
-  </div>
-  <!-- This is where your main page content will be loaded -->
-  <div class="oj-applayout-content">
-    <div role="main" class="oj-hybrid-applayout-content">
-      <div class="oj-hybrid-padding">
-        <h1>Tablero</h1>
-        <div>
-          <div>
-            <!--ko text: userName--><!--/ko--> VS <!--ko text: opponentUserName--><!--/ko--> 
-          </div>
-            <div>
-              <oj-label>Turno de <!--ko text:currentPlayerUserName--><!--/ko--> </oj-label->
-            </div>
-            <div>
-              <oj-button id='button1' on-oj-action='[[button1Click]]'>
-                <span><oj-bind-text value="[[button1Text]]"></oj-bind-text></span>
-            </oj-button>
-            <oj-button id='button2' on-oj-action='[[button2Click]]'>
-              <span><oj-bind-text value="[[button2Text]]"></oj-bind-text></span>
-          </oj-button>
-          <oj-button id='button3' on-oj-action='[[button3Click]]'>
-            <span><oj-bind-text value="[[button3Text]]"></oj-bind-text></span>
-        </oj-button>
-            </div>
-            <div>
-                <oj-button id='button4' on-oj-action='[[button4Click]]'>
-                    <span><oj-bind-text value="[[button4Text]]"></oj-bind-text></span>
-                </oj-button>
-                <oj-button id='button5' on-oj-action='[[button5Click]]'>
-                  <span><oj-bind-text value="[[button5Text]]"></oj-bind-text></span>
-              </oj-button>
-              <oj-button id='button6' on-oj-action='[[button6Click]]'>
-                <span><oj-bind-text value="[[button6Text]]"></oj-bind-text></span>
+		<header role="banner" class="oj-hybrid-applayout-header">
+			<oj-module config="[[headerConfig]]"></oj-module>
+		</header>
+	</div>
+	<!-- This is where your main page content will be loaded -->
+	<div class="oj-applayout-content">
+		<div role="main" class="oj-hybrid-applayout-content">
+			<div class="oj-hybrid-padding">
+				<h1>Tablero</h1>
+				<div>
+					<div>
+						Tablero de
+						<!--ko text: userName-->
+						<!--/ko-->
+					</div>
+					<div>
+						<oj-button id='button1' on-oj-action='[[button1Click]]'>
+						<span><oj-bind-text value="[[button1Text]]"></oj-bind-text></span>
+						</oj-button>
+						<oj-button id='button2' on-oj-action='[[button2Click]]'>
+						<span><oj-bind-text value="[[button2Text]]"></oj-bind-text></span>
+						</oj-button>
+						<oj-button id='button3' on-oj-action='[[button3Click]]'>
+						<span><oj-bind-text value="[[button3Text]]"></oj-bind-text></span>
+						</oj-button>
+					</div>
+					<div>
+						<oj-button id='button4' on-oj-action='[[button4Click]]'>
+						<span><oj-bind-text value="[[button4Text]]"></oj-bind-text></span>
+						</oj-button>
+						<oj-button id='button5' on-oj-action='[[button5Click]]'>
+						<span><oj-bind-text value="[[button5Text]]"></oj-bind-text></span>
+						</oj-button>
+						<oj-button id='button6' on-oj-action='[[button6Click]]'>
+						<span><oj-bind-text value="[[button6Text]]"></oj-bind-text></span>
+					</div>
+					<div>
+						<oj-button id='button7' on-oj-action='[[button7Click]]'>
+						<span><oj-bind-text value="[[button7Text]]"></oj-bind-text></span>
+						</oj-button>
+						<oj-button id='button8' on-oj-action='[[button8Click]]'>
+						<span><oj-bind-text value="[[button8Text]]"></oj-bind-text></span>
+						</oj-button>
+						<oj-button id='button9' on-oj-action='[[button9Click]]'>
+						<span><oj-bind-text value="[[button9Text]]"></oj-bind-text></span>
+						</oj-button>
+					</div>
 
-            </div>
-            <div>
-                <oj-button id='button7' on-oj-action='[[button7Click]]'>
-                    <span><oj-bind-text value="[[button7Text]]"></oj-bind-text></span>
-                </oj-button>
-                <oj-button id='button8' on-oj-action='[[button8Click]]'>
-                  <span><oj-bind-text value="[[button8Text]]"></oj-bind-text></span>
-              </oj-button>
-              <oj-button id='button9' on-oj-action='[[button9Click]]'>
-                <span><oj-bind-text value="[[button9Text]]"></oj-bind-text></span>
-              </oj-button>
-            </div>
-            <div>
+					<div>
+					<br>
+						Palabra:
+						<!--ko text: palabra-->
+						<!--/ko-->
+						---------------------------------------------------------------
+						Puntuación:
+						<!--ko text: puntuacion-->
+						<!--/ko-->
+						
+					<br>
+					<br>
+					</div>
+					<div>
+						Tablero de
+						<!--ko text: opponentUserName-->
+						<!--/ko-->
 
-           
-            </div>
-        </div>
-        
+					</div>
+					<div>
+						<oj-button id='button1Opponent'
+							on-oj-action='[[button1OpponentClick]]'> <span><oj-bind-text
+								value="[[button1OpponentText]]"></oj-bind-text></span> </oj-button>
+						<oj-button id='button2Opponent'
+							on-oj-action='[[button2OpponentClick]]'> <span><oj-bind-text
+								value="[[button2OpponentText]]"></oj-bind-text></span> </oj-button>
+						<oj-button id='button3Opponent'
+							on-oj-action='[[button3OpponentClick]]'> <span><oj-bind-text
+								value="[[button3OpponentText]]"></oj-bind-text></span> </oj-button>
+					</div>
+					<div>
+						<oj-button id='button4Opponent'
+							on-oj-action='[[button4OpponentClick]]'> <span><oj-bind-text
+								value="[[button4OpponentText]]"></oj-bind-text></span> </oj-button>
+						<oj-button id='button5Opponent'
+							on-oj-action='[[button5OpponentClick]]'> <span><oj-bind-text
+								value="[[button5OpponentText]]"></oj-bind-text></span> </oj-button>
+						<oj-button id='button6Opponent'
+							on-oj-action='[[button6OpponentClick]]'> <span><oj-bind-text
+								value="[[button6OpponentText]]"></oj-bind-text></span>
+					</div>
+					<div>
+						<oj-button id='button7Opponent'
+							on-oj-action='[[button7OpponentClick]]'> <span><oj-bind-text
+								value="[[button7OpponentText]]"></oj-bind-text></span> </oj-button>
+						<oj-button id='button8Opponent'
+							on-oj-action='[[button8OpponentClick]]'> <span><oj-bind-text
+								value="[[button8OpponentText]]"></oj-bind-text></span> </oj-button>
+						<oj-button id='button9Opponent'
+							on-oj-action='[[button9OpponentClick]]'> <span><oj-bind-text
+								value="[[button9OpponentText]]"></oj-bind-text></span> </oj-button>
+					</div>
 
-        
-      </div>
-    </div>
-  </div>
+					<div></div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
 </div>

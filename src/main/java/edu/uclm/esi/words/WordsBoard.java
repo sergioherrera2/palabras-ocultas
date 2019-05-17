@@ -23,8 +23,12 @@ public class WordsBoard extends Board {
 
 	@Override
 	public void move(AbstractPlayer player, Integer[] coordinates) throws Exception {
-		// TODO Auto-generated method stub
-
+//		char symbol = (this.match.getCurrentPlayer()==0 ? 'X' : 'O');
+//		int row=coordinates[0];
+//		int col=coordinates[1];
+//		if (squares[row][col]!=null)
+//			throw new Exception("Square occupied");
+//		squares[row][col]=symbol;
 	}
 
 	@Override

@@ -14,6 +14,7 @@ public class WordsMatch extends Match {
 		this.board = new WordsBoard(this);
 		this.boardA = this.descolocar();
 		this.boardB = this.descolocar();
+		this.board = this.descolocar();
 	}
 
 	private WordsBoard descolocar() {
@@ -21,7 +22,7 @@ public class WordsMatch extends Match {
 		for (int i = 0; i < 9; i++) {
 			result.getWords()[i] = ((WordsBoard) this.board).getWords()[i];
 		}
-		
+
 		Random dado = new Random();
 		for (int i = 0; i < 90; i++) {
 			int origen = dado.nextInt(9);
@@ -51,13 +52,14 @@ public class WordsMatch extends Match {
 	public WordsBoard getBoardB() {
 		return boardB;
 	}
+
 	@Override
 	public boolean isComplete() {
-		if(this.playerA!=null && this.playerB!=null){
+		if (this.playerA != null && this.playerB != null) {
 			this.boardA.setPlayer(this.getPlayerA().getUserName());
 			this.boardB.setPlayer(this.getPlayerB().getUserName());
 		}
-			
-		return this.playerA!=null && this.playerB!=null;
+
+		return this.playerA != null && this.playerB != null;
 	}
 }
