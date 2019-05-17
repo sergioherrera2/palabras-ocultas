@@ -51,4 +51,13 @@ public class WordsMatch extends Match {
 	public WordsBoard getBoardB() {
 		return boardB;
 	}
+	@Override
+	public boolean isComplete() {
+		if(this.playerA!=null && this.playerB!=null){
+			this.boardA.setPlayer(this.getPlayerA().getUserName());
+			this.boardB.setPlayer(this.getPlayerB().getUserName());
+		}
+			
+		return this.playerA!=null && this.playerB!=null;
+	}
 }

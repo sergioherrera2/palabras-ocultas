@@ -5,6 +5,15 @@ import edu.uclm.esi.games.model.Board;
 
 public class WordsBoard extends Board {
 	private String[] words;
+	private String playerName;
+
+	public String getPlayer() {
+		return playerName;
+	}
+
+	public void setPlayer(String player) {
+		this.playerName = player;
+	}
 
 	public WordsBoard(WordsMatch wordsMatch) {
 		super(wordsMatch);

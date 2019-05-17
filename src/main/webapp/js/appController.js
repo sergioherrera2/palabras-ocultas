@@ -38,6 +38,17 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojknockout'
             self.currentPlayerUserName=data.currentPlayerUserName;
             console.log("[INFO] usuario: " + self.userName);
             console.log("[INFO] rival: " + self.opponentUserName);
+            if(data.boardA.player==self.userName){
+            	self.boardUserWords=data.boardA.words;
+            	self.boardOpponentWords=data.boardB.words;
+            	
+            }else{
+            	self.boardUserWords=data.boardB.words;
+            	self.boardOpponentWords=data.boardA.words;
+            }
+            console.log("[INFO] boarduser" + self.boardUserWords);
+            console.log("[INFO] boardother" + self.boardOpponentWords);
+            
             self.router.go("tablero");
           }else if(data.type =="Movement"){
             self.router.currentState().dealWithMessage(data);

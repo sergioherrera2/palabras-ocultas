@@ -11,50 +11,56 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
   
     function TableroViewModel() {
       var self = this;
+      ko.applyBindings(new LabelValueModel(),
+              document.getElementById('form-container'));
      
       self.userName=ko.observable(app.userName);
       
       self.opponentUserName=ko.observable(app.opponentUserName);
       self.currentPlayerUserName=ko.observable(app.currentPlayerUserName);
 
-      self.button1Text="Palabra 1";
-      self.button2Text="Palabra 2";
-      self.button3Text="Palabra 3";
-      self.button4Text="Palabra 4";
-      self.button5Text="Palabra 5";
-      self.button6Text="Palabra 6";
-      self.button7Text="Palabra 7";
-      self.button8Text="Palabra 8";
-      self.button9Text="Palabra 9";
+      self.listWordsUser=app.boardUserWords+' ';
+      console.log("Lista Palabras:"+ self.listWordsUser)
+      listWordsSplit=self.listWordsUser.split(",");
+
+    self.button1Text=listWordsSplit[0];
+    self.button2Text=listWordsSplit[1];
+    self.button3Text=listWordsSplit[2];
+    self.button4Text=listWordsSplit[3];
+    self.button5Text=listWordsSplit[4];
+    self.button6Text=listWordsSplit[5];
+    self.button7Text=listWordsSplit[6];
+    self.button8Text=listWordsSplit[7];
+    self.button9Text=listWordsSplit[8];
 
 
       self.button1Click = function(){
-        console.log("Button1 clicked");
+        console.log(self.button1Text+" clicked");
       }
 
       self.button2Click = function(){
-        console.log("Button2 clicked");
+    	 console.log(self.button2Text+" clicked");
       }
       self.button3Click = function(){
-        console.log("Button3 clicked");
+    	  console.log(self.button3Text+" clicked");
       }
       self.button4Click = function(){
-        console.log("Button4 clicked");
+    	  console.log(self.button4Text+" clicked");
       }
       self.button5Click = function(){
-        console.log("Button5 clicked");
+    	  console.log(self.button5Text+" clicked");
       }
       self.button6Click = function(){
-        console.log("Button6 clicked");
+    	  console.log(self.button6Text+" clicked");
       }
       self.button7Click = function(){
-        console.log("Button7 clicked");
+    	  console.log(self.button7Text+" clicked");
       }
       self.button8Click = function(){
-        console.log("Button8 clicked");
+    	  console.log(self.button8Text+" clicked");
       }
       self.button9Click = function(){
-        console.log("Button9 clicked");
+    	  console.log(self.button9Text+" clicked");
       }
 
       self.dealWithMessage = function(data){
