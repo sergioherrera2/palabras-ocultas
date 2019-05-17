@@ -11,8 +11,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
   
     function TableroViewModel() {
       var self = this;
-      ko.applyBindings(new LabelValueModel(),
-              document.getElementById('form-container'));
      
       self.userName=ko.observable(app.userName);
       
@@ -111,5 +109,4 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
      * only one instance of the ViewModel is needed.
      */
     return new TableroViewModel();
-  }
-);
+  });
