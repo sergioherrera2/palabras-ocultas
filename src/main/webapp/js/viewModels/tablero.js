@@ -18,22 +18,23 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'appController',
 		self.palabraObservable = ko.observable(self.palabra);
 		self.boardAux = app.boardGeneral + ' ';
 		self.boardGeneral = self.boardAux.split(",");
-		self.palabrasAcertadas = 0;
-		self.puntuacion = ko.observable(self.palabrasAcertadas);
-
+		var palabrasAcertadas = 0;
+		var sigPalabra = "";
+		
 		self.listWordsUser = app.boardUserWords + ' ';
 		console.log("Lista Palabras:" + self.listWordsUser)
 		listWordsSplit = self.listWordsUser.split(",");
 
 		self.comprobarPalabra = function(boton) {
-			if (boton == self.palabra) {
-				self.palabrasAcertadas++;
-				self.palabra = self.boardGeneral[self.palabrasAcertadas];
+			if (boton == sigPalabra) {
+				palabrasAcertadas++;
+				sigPalabra = self.boardGeneral[palabrasAcertadas];
 			} else {
-				self.palabrasAcertadas = 0;
-				self.palabra = self.boardGeneral[0];
+				palabrasAcertadas = 0;
+				sigPalabra = self.boardGeneral[0];
 			}
-			self.puntuacion = ko.observable(self.palabrasAcertadas);
+			document.getElementById('puntuacion').innerHTML = palabrasAcertadas;
+			document.getElementById('palabra').innerHTML = sigPalabra;
 		}
 
 		self.button1Text = listWordsSplit[0];
@@ -49,7 +50,6 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'appController',
 		self.listWordsOpponent = app.boardOpponentWords + ' ';
 		console.log("[INFO]" + self.listWordsOpponent);
 		listWordsOpponentSplit = self.listWordsOpponent.split(",");
-		console.log("[INFO]" + self.listWordsOpponent[0]);
 		self.button1OpponentText = listWordsOpponentSplit[0];
 		self.button2OpponentText = listWordsOpponentSplit[1];
 		self.button3OpponentText = listWordsOpponentSplit[2];
@@ -157,7 +157,9 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'appController',
 		 * View is reconnected after being disconnected.
 		 */
 		self.connected = function() {
-			self.palabra = self.boardGeneral[0];
+			sigPalabra = self.boardGeneral[0];
+			document.getElementById('palabra').innerHTML = sigPalabra;
+			document.getElementById('puntuacion').innerHTML = 0;
 		};
 
 		/**
