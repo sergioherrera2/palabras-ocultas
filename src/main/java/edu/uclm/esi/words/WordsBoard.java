@@ -17,24 +17,21 @@ public class WordsBoard extends Board {
 
 	public WordsBoard(WordsMatch wordsMatch) {
 		super(wordsMatch);
-		this.words = new String[]{"Albacete", "Cadiz", "Cuenca", "Barcelona", "Madrid", "Ciudad Real", "Burgos", "Valencia", "Tenerife"};
-		
+		this.words = new String[] { "Albacete", "Cadiz", "Cuenca", "Barcelona", "Madrid", "Ciudad Real", "Burgos",
+				"Valencia", "Tenerife" };
+
 	}
 
 	@Override
 	public void move(AbstractPlayer player, Integer[] coordinates) throws Exception {
-//		char symbol = (this.match.getCurrentPlayer()==0 ? 'X' : 'O');
-//		int row=coordinates[0];
-//		int col=coordinates[1];
-//		if (squares[row][col]!=null)
-//			throw new Exception("Square occupied");
-//		squares[row][col]=symbol;
+		if (coordinates[0] == 9) {
+			this.match.setWinner(player);
+		}
 	}
 
 	@Override
 	public AbstractPlayer getWinner() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.match.getWinner();
 	}
 
 	@Override

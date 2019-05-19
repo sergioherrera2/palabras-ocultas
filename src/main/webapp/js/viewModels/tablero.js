@@ -13,7 +13,7 @@ define(
 			function TableroViewModel() {
 				var self = this;
 
-
+				var coordinates = [ 9 ];
 				self.userName = ko.observable(app.userName);
 				self.opponentUserName = ko.observable(app.opponentUserName);
 				self.currentPlayerUserName = ko
@@ -32,20 +32,32 @@ define(
 						descubrirBoton(n);
 						palabrasAcertadas++;
 						self.sigPalabra = self.boardGeneral[palabrasAcertadas];
+						coordinates[n - 1] = 1;
 					} else {
 						ocultarBotones();
 						palabrasAcertadas = 0;
 						self.sigPalabra = self.boardGeneral[0];
+						for (i = 0; i < 9; i++) {
+							coordinates[i] = 0;
+						}
 					}
 					document.getElementById('puntuacion').innerHTML = palabrasAcertadas;
 					document.getElementById('palabra').innerHTML = self.sigPalabra;
+					app.move(coordinates);
+				}
+
+				self.actualizarTableroRival = function(tableroRival){
+					for (i = 0; i<9; i++){
+						if (tableroRival[i] == 1)
+							descubrirBotonRival(i);
+					}
 				}
 				
-				function inicializar5segs(){
+				function inicializar5segs() {
 					ocultarBotones();
 					self.sigPalabra = self.boardGeneral[0];
 					document.getElementById('palabra').innerHTML = self.sigPalabra;
-					
+
 				}
 
 				function descubrirBoton(n) {
@@ -81,6 +93,37 @@ define(
 						break;
 					}
 				}
+				
+				function descubrirBotonRival(n) {
+					switch (n) {
+					case 1:
+						document.getElementById('button1Opponent').disabled = false;						break;
+					case 2:
+						document.getElementById('button2Opponent').disabled = false;						break;
+						break;
+					case 3:
+						document.getElementById('button3Opponent').disabled = false;						break;
+						break;
+					case 4:
+						document.getElementById('button4Opponent').disabled = false;						break;
+						break;
+					case 5:
+						document.getElementById('button5Opponent').disabled = false;						break;
+						break;
+					case 6:
+						document.getElementById('button6Opponent').disabled = false;						break;
+						break;
+					case 7:
+						document.getElementById('button7Opponent').disabled = false;						break;
+						break;
+					case 8:
+						document.getElementById('button8Opponent').disabled = false;						break;
+						break;
+					case 9:
+						document.getElementById('button9Opponent').disabled = false;						break;
+						break;
+					}
+				}
 
 				function ocultarBotones() {
 					// oculta todos los botones
@@ -93,8 +136,8 @@ define(
 					self.button7Text("-");
 					self.button8Text("-");
 					self.button9Text("-");
-					
 				}
+				
 				self.button1Val = listWordsSplit[0];
 				self.button2Val = listWordsSplit[1];
 				self.button3Val = listWordsSplit[2];
@@ -117,52 +160,52 @@ define(
 				self.button7OpponentText = listWordsOpponentSplit[6];
 				self.button8OpponentText = listWordsOpponentSplit[7];
 				self.button9OpponentText = listWordsOpponentSplit[8];
-				
-				self.button1Text=ko.observable(self.button1Val);
-				self.button2Text=ko.observable(self.button2Val);
-				self.button3Text=ko.observable(self.button3Val);
-				self.button4Text=ko.observable(self.button4Val);
-				self.button5Text=ko.observable(self.button5Val);
-				self.button6Text=ko.observable(self.button6Val);
-				self.button7Text=ko.observable(self.button7Val);
-				self.button8Text=ko.observable(self.button8Val);
-				self.button9Text=ko.observable(self.button9Val);
+
+				self.button1Text = ko.observable(self.button1Val);
+				self.button2Text = ko.observable(self.button2Val);
+				self.button3Text = ko.observable(self.button3Val);
+				self.button4Text = ko.observable(self.button4Val);
+				self.button5Text = ko.observable(self.button5Val);
+				self.button6Text = ko.observable(self.button6Val);
+				self.button7Text = ko.observable(self.button7Val);
+				self.button8Text = ko.observable(self.button8Val);
+				self.button9Text = ko.observable(self.button9Val);
 
 				self.button1Click = function() {
-					console.log(self.button1Text + " clicked");
+					console.log(self.button1Text() + " clicked");
 					self.comprobarPalabra(self.button1Val, 1);
 				}
 
 				self.button2Click = function() {
-					console.log(self.button2Text + " clicked");
+					console.log(self.button2Text() + " clicked");
 					self.comprobarPalabra(self.button2Val, 2);
 				}
 				self.button3Click = function() {
-					console.log(self.button3Text + " clicked");
+					console.log(self.button3Text() + " clicked");
 					self.comprobarPalabra(self.button3Val, 3);
 				}
 				self.button4Click = function() {
-					console.log(self.button4Text + " clicked");
+					console.log(self.button4Text() + " clicked");
 					self.comprobarPalabra(self.button4Val, 4);
 				}
 				self.button5Click = function() {
-					console.log(self.button5Text + " clicked");
+					console.log(self.button5Text() + " clicked");
 					self.comprobarPalabra(self.button5Val, 5);
 				}
 				self.button6Click = function() {
-					console.log(self.button6Text + " clicked");
+					console.log(self.button6Text() + " clicked");
 					self.comprobarPalabra(self.button6Val, 6);
 				}
 				self.button7Click = function() {
-					console.log(self.button7Text + " clicked");
+					console.log(self.button7Text() + " clicked");
 					self.comprobarPalabra(self.button7Val, 7);
 				}
 				self.button8Click = function() {
-					console.log(self.button8Text + " clicked");
+					console.log(self.button8Text() + " clicked");
 					self.comprobarPalabra(self.button8Val, 8);
 				}
 				self.button9Click = function() {
-					console.log(self.button9Text + " clicked");
+					console.log(self.button9Text() + " clicked");
 					self.comprobarPalabra(self.button9Val, 9);
 				}
 
@@ -243,7 +286,11 @@ define(
 					document.getElementById('button7Opponent').disabled = true;
 					document.getElementById('button8Opponent').disabled = true;
 					document.getElementById('button9Opponent').disabled = true;
-					setTimeout(inicializar5segs,5000);
+					setTimeout(inicializar5segs, 5000);
+
+					for (i = 0; i < 9; i++) {
+						coordinates[i] = 0;
+					}
 				};
 
 				/**
