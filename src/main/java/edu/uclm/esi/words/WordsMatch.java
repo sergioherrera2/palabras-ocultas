@@ -17,7 +17,7 @@ public class WordsMatch extends Match {
 		this.board = this.descolocar();
 	}
 
-	private WordsBoard descolocar() {
+	public WordsBoard descolocar() {
 		WordsBoard result = new WordsBoard(this);
 		for (int i = 0; i < 9; i++) {
 			result.getWords()[i] = ((WordsBoard) this.board).getWords()[i];
@@ -51,6 +51,24 @@ public class WordsMatch extends Match {
 
 	public WordsBoard getBoardB() {
 		return boardB;
+	}
+
+	public void setBoard(WordsBoard board) {
+		for (int i = 0; i < board.getWords().length; i++) {
+			((WordsBoard) this.board).getWords()[i] = board.getWords()[i];
+		}
+	}
+
+	public void setBoardA(WordsBoard boardA) {
+		for (int i = 0; i < boardA.getWords().length; i++) {
+			this.boardA.getWords()[i] = boardA.getWords()[i];
+		}
+	}
+
+	public void setBoardB(WordsBoard boardB) {
+		for (int i = 0; i < boardB.getWords().length; i++) {
+			this.boardB.getWords()[i] = boardB.getWords()[i];
+		}
 	}
 
 	@Override

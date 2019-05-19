@@ -24,6 +24,7 @@ import edu.uclm.esi.games.model.Match;
 import edu.uclm.esi.games.model.Player;
 import edu.uclm.esi.games.model.SimplePlayer;
 import edu.uclm.esi.games.model.Token;
+import edu.uclm.esi.games.model.Word;
 import edu.uclm.esi.games.ppt.PPTGame;
 import edu.uclm.esi.games.tictactoe.TictactoeGame;
 import edu.uclm.esi.games.ws.WSServer;
@@ -77,6 +78,10 @@ public class Manager {
 		return ManagerHolder.singleton;
 	}
 
+	public Iterable<Word> getWords() {
+		return wordsRepo.findAll();
+	}
+	
 	public Match joinGame(AbstractPlayer player, int idGame) throws Exception {
 		Game game=this.games.get(idGame);
 		Match match = game.getMatch(player);

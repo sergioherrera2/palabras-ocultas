@@ -17,6 +17,8 @@ import edu.uclm.esi.games.model.AbstractPlayer;
 import edu.uclm.esi.games.model.Board;
 import edu.uclm.esi.games.model.Match;
 import edu.uclm.esi.games.web.Manager;
+import edu.uclm.esi.words.WordsBoard;
+import edu.uclm.esi.words.WordsMatch;
 
 @Component
 public class WSServer extends TextWebSocketHandler {
@@ -231,6 +233,10 @@ public class WSServer extends TextWebSocketHandler {
 		AbstractPlayer playerB=match.getPlayerB();
 		WSSession sessionA=sessions.findByUserName(playerA.getUserName());
 		WSSession sessionB=sessions.findByUserName(playerB.getUserName());
+		if (match.getGame().getName().equals("Hidden words")) {
+			WordsMatch wordMatch=(WordsMatch) match;
+			((WordsBoard) wordMatch.getBoard()).setWords(Manager.get().getWords());
+		}
 		try {
 			JSONObject jso=new JSONObject(new ObjectMapper().writeValueAsString(match));
 			jso.put("type", "Match");
