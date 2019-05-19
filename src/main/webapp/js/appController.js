@@ -81,7 +81,7 @@ define(
 				self.router = oj.Router.rootInstance;
 				self.router.configure({
 					'login' : {
-						label : 'Cuenta',
+						label : 'Login',
 						isDefault : true
 					},
 					'juegos' : {
@@ -95,6 +95,9 @@ define(
 					},
 					'salaDeEspera' : {
 						label : 'Sala de espera'
+					},
+					'cuenta' :{
+						label : 'Cuenta'
 					}
 
 				});
@@ -129,7 +132,7 @@ define(
 				var navData = [
 						{
 							name : 'Cuenta',
-							id : 'login',
+							id : 'cuenta',
 							iconClass : 'oj-navigationlist-item-icon demo-icon-font-24 demo-chart-icon-24'
 						},
 						{

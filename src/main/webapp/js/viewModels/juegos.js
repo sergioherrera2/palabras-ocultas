@@ -13,9 +13,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojmodule-eleme
       var self = this;
       self.selectedGame = ko.observable("Cargando lista...");
       self.games = ko.observableArray([]);
-      
       self.joinSalaDeEspera = function() {
-       app.router.go("salaDeEspera");
+    	  if(self.selectedGame()=="Hidden words"){
+    	      app.router.go("salaDeEspera");
+    	  }else{
+    		  window.alert("No está disponible ese juego");
+    	  }
+
       }
 
       function loadGames(){

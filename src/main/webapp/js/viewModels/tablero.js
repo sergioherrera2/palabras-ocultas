@@ -13,32 +13,39 @@ define(
 			function TableroViewModel() {
 				var self = this;
 
+
 				self.userName = ko.observable(app.userName);
 				self.opponentUserName = ko.observable(app.opponentUserName);
 				self.currentPlayerUserName = ko
 						.observable(app.currentPlayerUserName);
 				self.palabraObservable = ko.observable(self.palabra);
-				self.boardAux = app.boardGeneral + ' ';
+				self.boardAux = app.boardGeneral + '';
 				self.boardGeneral = self.boardAux.split(",");
 				var palabrasAcertadas = 0;
-				var sigPalabra = "";
 
-				self.listWordsUser = app.boardUserWords + ' ';
+				self.listWordsUser = app.boardUserWords + '';
 				console.log("Lista Palabras:" + self.listWordsUser)
 				listWordsSplit = self.listWordsUser.split(",");
 
 				self.comprobarPalabra = function(boton, n) {
-					if (boton == sigPalabra) {
+					if (boton == self.sigPalabra) {
 						descubrirBoton(n);
 						palabrasAcertadas++;
-						sigPalabra = self.boardGeneral[palabrasAcertadas];
+						self.sigPalabra = self.boardGeneral[palabrasAcertadas];
 					} else {
 						ocultarBotones();
 						palabrasAcertadas = 0;
-						sigPalabra = self.boardGeneral[0];
+						self.sigPalabra = self.boardGeneral[0];
 					}
 					document.getElementById('puntuacion').innerHTML = palabrasAcertadas;
-					document.getElementById('palabra').innerHTML = sigPalabra;
+					document.getElementById('palabra').innerHTML = self.sigPalabra;
+				}
+				
+				function inicializar5segs(){
+					ocultarBotones();
+					self.sigPalabra = self.boardGeneral[0];
+					document.getElementById('palabra').innerHTML = self.sigPalabra;
+					
 				}
 
 				function descubrirBoton(n) {
@@ -46,76 +53,48 @@ define(
 					case 1:
 						// este self es el valor que corresponde al botón html,
 						// pero no se actualiza al cambiarlo
-						self.button1Text = self.button1Val;
-						document.getElementById('button1').innerHTML = self.button1Val;
+						self.button1Text(self.button1Val);
 						break;
 					case 2:
-						self.button2Text = self.button2Val;
-						document.getElementById('button2').innerHTML = self.button2Val;
+						self.button2Text(self.button2Val);
 						break;
 					case 3:
-						self.button3Text = self.button3Val;
-						document.getElementById('button3').innerHTML = self.button3Val;
+						self.button3Text(self.button3Val);
 						break;
 					case 4:
-						self.button4Text = self.button4Val;
-						document.getElementById('button4').innerHTML = self.button4Val;
+						self.button4Text(self.button4Val);
 						break;
 					case 5:
-						self.button5Text = self.button5Val;
-						document.getElementById('button5').innerHTML = self.button5Val;
+						self.button5Text(self.button5Val);
 						break;
 					case 6:
-						self.button6Text = self.button6Val;
-						document.getElementById('button6').innerHTML = self.button6Val;
+						self.button6Text(self.button6Val);
 						break;
 					case 7:
-						self.button7Text = self.button7Val;
-						document.getElementById('button7').innerHTML = self.button7Val;
+						self.button7Text(self.button7Val);
 						break;
 					case 8:
-						self.button8Text = self.button8Val;
-						document.getElementById('button8').innerHTML = self.button8Val;
+						self.button8Text(self.button8Val);
 						break;
 					case 9:
-						self.button9Text = self.button9Val;
-						document.getElementById('button9').innerHTML = self.button9Val;
+						self.button9Text(self.button9Val);
 						break;
 					}
 				}
 
 				function ocultarBotones() {
 					// oculta todos los botones
-					self.button1Text = self.button1Val;
-					document.getElementById('button1').innerHTML = "-";
-					self.button2Text = self.button2Val;
-					document.getElementById('button2').innerHTML = "-";
-					self.button3Text = self.button3Val;
-					document.getElementById('button3').innerHTML = "-";
-					self.button4Text = self.button4Val;
-					document.getElementById('button4').innerHTML = "-";
-					self.button5Text = self.button5Val;
-					document.getElementById('button5').innerHTML = "-";
-					self.button6Text = self.button6Val;
-					document.getElementById('button6').innerHTML = "-";
-					self.button7Text = self.button7Val;
-					document.getElementById('button7').innerHTML = "-";
-					self.button8Text = self.button8Val;
-					document.getElementById('button8').innerHTML = "-";
-					self.button9Text = self.button9Val;
-					document.getElementById('button9').innerHTML = "-";
+					self.button1Text("-");
+					self.button2Text("-");
+					self.button3Text("-");
+					self.button4Text("-");
+					self.button5Text("-");
+					self.button6Text("-");
+					self.button7Text("-");
+					self.button8Text("-");
+					self.button9Text("-");
+					
 				}
-
-				self.button1Text = "-";
-				self.button2Text = "-";
-				self.button3Text = "-";
-				self.button4Text = "-";
-				self.button5Text = "-";
-				self.button6Text = "-";
-				self.button7Text = "-";
-				self.button8Text = "-";
-				self.button9Text = "-";
-
 				self.button1Val = listWordsSplit[0];
 				self.button2Val = listWordsSplit[1];
 				self.button3Val = listWordsSplit[2];
@@ -138,6 +117,16 @@ define(
 				self.button7OpponentText = listWordsOpponentSplit[6];
 				self.button8OpponentText = listWordsOpponentSplit[7];
 				self.button9OpponentText = listWordsOpponentSplit[8];
+				
+				self.button1Text=ko.observable(self.button1Val);
+				self.button2Text=ko.observable(self.button2Val);
+				self.button3Text=ko.observable(self.button3Val);
+				self.button4Text=ko.observable(self.button4Val);
+				self.button5Text=ko.observable(self.button5Val);
+				self.button6Text=ko.observable(self.button6Val);
+				self.button7Text=ko.observable(self.button7Val);
+				self.button8Text=ko.observable(self.button8Val);
+				self.button9Text=ko.observable(self.button9Val);
 
 				self.button1Click = function() {
 					console.log(self.button1Text + " clicked");
@@ -174,7 +163,7 @@ define(
 				}
 				self.button9Click = function() {
 					console.log(self.button9Text + " clicked");
-					self.comprobarPalabra(self.butto9Val, 9);
+					self.comprobarPalabra(self.button9Val, 9);
 				}
 
 				self.button1OpponentClick = function() {
@@ -239,8 +228,8 @@ define(
 				 * being disconnected.
 				 */
 				self.connected = function() {
-					sigPalabra = self.boardGeneral[0];
-					document.getElementById('palabra').innerHTML = sigPalabra;
+					self.sigPalabra = " ";
+					document.getElementById('palabra').innerHTML = " ";
 					document.getElementById('puntuacion').innerHTML = 0;
 
 					// desactivamos los botones del rival, y podemos activarlos
@@ -254,6 +243,7 @@ define(
 					document.getElementById('button7Opponent').disabled = true;
 					document.getElementById('button8Opponent').disabled = true;
 					document.getElementById('button9Opponent').disabled = true;
+					setTimeout(inicializar5segs,5000);
 				};
 
 				/**
