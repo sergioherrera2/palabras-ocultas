@@ -42,7 +42,6 @@ define(
 					self.ws.onmessage = function(event) {
 						console.log("[INFO] " + event.data);
 						var data = JSON.parse(event.data);
-						console.log("[INFO] " + data);
 						if (data.type == "Match") {
 							self.opponentUserName = (data.playerA.userName == self.userName ? data.playerB.userName
 									: data.playerA.userName);
@@ -67,13 +66,12 @@ define(
 									+ self.boardOpponentWords);
 
 							self.router.go("tablero");
-						} else if (data.type == "Movement") {
-							if (data.mover == self.opponentUserName) {
-								// self.router.currentState().dealWithMessage(data);
-								self.tableroRival = data.coordinates;
-								tablero.actualizarTableroRival(self.tableroRival);
-							}
 						}
+						// self.router.currentState().viewModel.dealWithMessage(data);
+						// self.router.currentState().dealWithMessage(data);
+						// self.tableroRival = data.coordinates;
+						// tablero.actualizarTableroRival(self.tableroRival);
+
 					}
 
 					self.ws.onerror = function() {

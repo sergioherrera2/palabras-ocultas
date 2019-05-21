@@ -23,6 +23,8 @@ define(
 				self.boardGeneral = self.boardAux.split(",");
 				var palabrasAcertadas = 0;
 
+				conectarWebSocket();
+
 				self.listWordsUser = app.boardUserWords + '';
 				console.log("Lista Palabras:" + self.listWordsUser)
 				listWordsSplit = self.listWordsUser.split(",");
@@ -46,13 +48,13 @@ define(
 					app.move(coordinates);
 				}
 
-				self.actualizarTableroRival = function(tableroRival){
-					for (i = 0; i<9; i++){
+				self.actualizarTableroRival = function(tableroRival) {
+					for (i = 0; i < 9; i++) {
 						if (tableroRival[i] == 1)
 							descubrirBotonRival(i);
 					}
 				}
-				
+
 				function inicializar5segs() {
 					ocultarBotones();
 					self.sigPalabra = self.boardGeneral[0];
@@ -93,34 +95,35 @@ define(
 						break;
 					}
 				}
-				
+
 				function descubrirBotonRival(n) {
 					switch (n) {
 					case 1:
-						document.getElementById('button1Opponent').disabled = false;						break;
+						document.getElementById('button1Opponent').disabled = false;
+						break;
 					case 2:
-						document.getElementById('button2Opponent').disabled = false;						break;
+						document.getElementById('button2Opponent').disabled = false;
 						break;
 					case 3:
-						document.getElementById('button3Opponent').disabled = false;						break;
+						document.getElementById('button3Opponent').disabled = false;
 						break;
 					case 4:
-						document.getElementById('button4Opponent').disabled = false;						break;
+						document.getElementById('button4Opponent').disabled = false;
 						break;
 					case 5:
-						document.getElementById('button5Opponent').disabled = false;						break;
+						document.getElementById('button5Opponent').disabled = false;
 						break;
 					case 6:
-						document.getElementById('button6Opponent').disabled = false;						break;
+						document.getElementById('button6Opponent').disabled = false;
 						break;
 					case 7:
-						document.getElementById('button7Opponent').disabled = false;						break;
+						document.getElementById('button7Opponent').disabled = false;
 						break;
 					case 8:
-						document.getElementById('button8Opponent').disabled = false;						break;
+						document.getElementById('button8Opponent').disabled = false;
 						break;
 					case 9:
-						document.getElementById('button9Opponent').disabled = false;						break;
+						document.getElementById('button9Opponent').disabled = false;
 						break;
 					}
 				}
@@ -137,7 +140,7 @@ define(
 					self.button8Text("-");
 					self.button9Text("-");
 				}
-				
+
 				self.button1Val = listWordsSplit[0];
 				self.button2Val = listWordsSplit[1];
 				self.button3Val = listWordsSplit[2];
@@ -239,7 +242,51 @@ define(
 				}
 
 				self.dealWithMessage = function(data) {
-					console.log(data);
+					// if (data.type=="Movement") {
+					// self.currentPlayerUserName(data.currentPlayerUserName);
+					// var coordinates=data.coordinates;
+					// if (data.mover==self.userName())
+					// document.getElementById("b" + coordinates[0] + "" +
+					// coordinates[1]).innerHTML="X";
+					// else
+					// document.getElementById("b" + coordinates[0] + "" +
+					// coordinates[1]).innerHTML="O";
+					// if (data.winnerName) {
+					// self.mensaje("Ha ganado " + data.winnerName);
+					// }
+					// if (data.draw) {
+					// self.mensaje("Habéis empatado.");
+					// }
+					// } else if (type=="Error") {
+					// var message=data.message;
+					// self.mensaje=ko.observable(message);
+					// return;
+					// }
+				}
+				function conectarWebSocket(data) {
+					self.ws = app.ws;
+
+					self.ws.onopen = function() {
+						console.log("[WS-Tablero] WebSocket conectado.");
+					}
+
+					self.ws.onclose = function() {
+						console.log("[WS-Tablero] WebSocket desconectado.");
+					}
+
+					self.ws.onmessage = function(event) {
+						console.log("[WS-Tablero] " + event.data);
+						var data = JSON.parse(event.data);
+						console.log("[WS-Tablero] " + data);
+						if (data.type == "Movement") {
+							self.tableroRival = data.coordinates;
+							tablero.actualizarTableroRival(self.tableroRival);
+						}
+					}
+
+					self.ws.onerror = function() {
+						console.log("[ERROR]: " + event.data);
+					}
 				}
 
 				// Header Config
