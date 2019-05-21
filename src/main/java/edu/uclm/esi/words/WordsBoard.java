@@ -25,7 +25,13 @@ public class WordsBoard extends Board {
 
 	@Override
 	public void move(AbstractPlayer player, Integer[] coordinates) throws Exception {
-		if (coordinates[0] == 9) {
+		int var = 0;
+		for (int i = 0; i < 9; i++) {
+			if (coordinates[i] == 1) {
+				var++;
+			}
+		}
+		if (var == 9) {
 			this.match.setWinner(player);
 		}
 	}

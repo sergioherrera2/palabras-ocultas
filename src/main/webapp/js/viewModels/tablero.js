@@ -21,6 +21,7 @@ define(
 				self.palabraObservable = ko.observable(self.palabra);
 				self.boardAux = app.boardGeneral + '';
 				self.boardGeneral = self.boardAux.split(",");
+				self.winner = 0;
 				var palabrasAcertadas = 0;
 
 				conectarWebSocket();
@@ -30,29 +31,40 @@ define(
 				listWordsSplit = self.listWordsUser.split(",");
 
 				self.comprobarPalabra = function(boton, n) {
-					if (boton == self.sigPalabra) {
-						descubrirBoton(n);
-						palabrasAcertadas++;
-						self.sigPalabra = self.boardGeneral[palabrasAcertadas];
-						coordinates[n - 1] = 1;
-					} else {
-						ocultarBotones();
-						palabrasAcertadas = 0;
-						self.sigPalabra = self.boardGeneral[0];
-						for (i = 0; i < 9; i++) {
-							coordinates[i] = 0;
+					if (self.winner != 1) {
+						if (boton == self.sigPalabra) {
+							descubrirBoton(n);
+							palabrasAcertadas++;
+							if (palabrasAcertadas < 9) {
+								self.sigPalabra = self.boardGeneral[palabrasAcertadas];
+							} else {
+								self.sigPalabra = "";
+							}
+							coordinates[n - 1] = 1;
+						} else {
+							ocultarBotones();
+							palabrasAcertadas = 0;
+							self.sigPalabra = self.boardGeneral[0];
+							for (i = 0; i < 9; i++) {
+								coordinates[i] = 0;
+							}
 						}
+						document.getElementById('puntuacion').innerHTML = palabrasAcertadas;
+						document.getElementById('palabra').innerHTML = self.sigPalabra;
+						app.move(coordinates);
 					}
-					document.getElementById('puntuacion').innerHTML = palabrasAcertadas;
-					document.getElementById('palabra').innerHTML = self.sigPalabra;
-					app.move(coordinates);
 				}
 
 				self.actualizarTableroRival = function(tableroRival) {
+					ones = 0;
 					for (i = 0; i < 9; i++) {
-						if (tableroRival[i] == 1)
-							descubrirBotonRival(i);
+						if (tableroRival[i] == 1) {
+							ones = 1;
+							descubrirBotonRival(i + 1);
+						}
 					}
+					if (ones == 0)
+						bloquearBotonRival();
 				}
 
 				function inicializar5segs() {
@@ -65,8 +77,6 @@ define(
 				function descubrirBoton(n) {
 					switch (n) {
 					case 1:
-						// este self es el valor que corresponde al botón html,
-						// pero no se actualiza al cambiarlo
 						self.button1Text(self.button1Val);
 						break;
 					case 2:
@@ -242,27 +252,9 @@ define(
 				}
 
 				self.dealWithMessage = function(data) {
-					// if (data.type=="Movement") {
-					// self.currentPlayerUserName(data.currentPlayerUserName);
-					// var coordinates=data.coordinates;
-					// if (data.mover==self.userName())
-					// document.getElementById("b" + coordinates[0] + "" +
-					// coordinates[1]).innerHTML="X";
-					// else
-					// document.getElementById("b" + coordinates[0] + "" +
-					// coordinates[1]).innerHTML="O";
-					// if (data.winnerName) {
-					// self.mensaje("Ha ganado " + data.winnerName);
-					// }
-					// if (data.draw) {
-					// self.mensaje("Habéis empatado.");
-					// }
-					// } else if (type=="Error") {
-					// var message=data.message;
-					// self.mensaje=ko.observable(message);
-					// return;
-					// }
+
 				}
+
 				function conectarWebSocket(data) {
 					self.ws = app.ws;
 
@@ -277,16 +269,32 @@ define(
 					self.ws.onmessage = function(event) {
 						console.log("[WS-Tablero] " + event.data);
 						var data = JSON.parse(event.data);
-						console.log("[WS-Tablero] " + data);
-						if (data.type == "Movement") {
+						if (data.type == "Movement"
+								&& data.mover == app.opponentUserName) {
 							self.tableroRival = data.coordinates;
-							tablero.actualizarTableroRival(self.tableroRival);
+							self.actualizarTableroRival(self.tableroRival);
+						}
+						if (data.winnerName != null) {
+							window.alert("Ha ganado " + data.winnerName)
+							self.winner = 1;
 						}
 					}
 
 					self.ws.onerror = function() {
 						console.log("[ERROR]: " + event.data);
 					}
+				}
+
+				function bloquearBotonRival() {
+					document.getElementById('button1Opponent').disabled = true;
+					document.getElementById('button2Opponent').disabled = true;
+					document.getElementById('button3Opponent').disabled = true;
+					document.getElementById('button4Opponent').disabled = true;
+					document.getElementById('button5Opponent').disabled = true;
+					document.getElementById('button6Opponent').disabled = true;
+					document.getElementById('button7Opponent').disabled = true;
+					document.getElementById('button8Opponent').disabled = true;
+					document.getElementById('button9Opponent').disabled = true;
 				}
 
 				// Header Config
@@ -322,17 +330,7 @@ define(
 					document.getElementById('palabra').innerHTML = " ";
 					document.getElementById('puntuacion').innerHTML = 0;
 
-					// desactivamos los botones del rival, y podemos activarlos
-					// para indicar qué palabras ha acertado
-					document.getElementById('button1Opponent').disabled = true;
-					document.getElementById('button2Opponent').disabled = true;
-					document.getElementById('button3Opponent').disabled = true;
-					document.getElementById('button4Opponent').disabled = true;
-					document.getElementById('button5Opponent').disabled = true;
-					document.getElementById('button6Opponent').disabled = true;
-					document.getElementById('button7Opponent').disabled = true;
-					document.getElementById('button8Opponent').disabled = true;
-					document.getElementById('button9Opponent').disabled = true;
+					bloquearBotonRival();
 					setTimeout(inicializar5segs, 5000);
 
 					for (i = 0; i < 9; i++) {
